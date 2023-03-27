@@ -11,7 +11,7 @@ const Hero = () => {
           <p className="text-white animate__animated  animate__bounceInLeft text-lg break-all whitespace-normal w-full">
             Build any website of your dreams
           </p>
-          <div className="mt-20">
+          <div className="mt-20 z-30">
             <form action="">
               <div className="flex flex-wrap space-y-2 md:space-x-3">
                 <div className="">
@@ -33,7 +33,7 @@ const Hero = () => {
             </form>
           </div>
         </div>
-        <div className="hidden self-end ml-[-130px] mb-[-190px] md:flex">
+        <div className="hidden self-end ml-[-130px] mb-[-190px] md:flex z-30">
           <img
             className="w-[50rem] animate__animated animate__pulse animate__infinite"
             src={WelcomeImg}
