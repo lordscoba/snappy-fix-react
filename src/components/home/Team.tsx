@@ -16,7 +16,7 @@ type Tests = {
 
 const Team = () => {
   return (
-    <section className="p-5">
+    <section id="team" className="p-5">
       <h3 className="text-center text-4xl text-[#5b32b4] hover:text-6xl md:text-6xl">
         Our Team
       </h3>

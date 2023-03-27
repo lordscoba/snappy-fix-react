@@ -1,6 +1,9 @@
 const Contact_us = () => {
   return (
-    <section className="bg-[#f5f9fc] border-t-0  border-slate-500 shadow-2xl shadow-black">
+    <section
+      id="contact"
+      className="bg-[#f5f9fc] border-t-0  border-slate-500 shadow-2xl shadow-black"
+    >
       <div className="flex flex-wrap px-8 py-24 space-y-10 justify-between lg:px-40">
         <div className="flex flex-col space-y-10 md:space-y-3 w-full md:w-1/2 lg:w-[30rem]">
           <div className="">

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   Hero,
   Why,
@@ -12,19 +12,43 @@ import {
   Team,
   ContactUs,
 } from "../components/home";
-import NavbarMenu from "../components/Layout/Nav";
+import { NavbarMenu } from "../components/Layout";
 import { SnowPics } from "../images";
+import { Snow } from "../screens";
 
 const Home = () => {
+  const [scrollTop, setScrollTop] = useState<any>(0);
   const backgroundImage: any = {
     backgroundImage: `url(${SnowPics})`,
   };
+
+  useEffect(() => {
+    const handleScroll = (event: any) => {
+      setScrollTop(window.scrollY);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  // console.log(scrollTop);
+
   return (
-    <div style={{ overflowX: "hidden" }}>
+    <div
+      className="relative"
+      style={{ overflowX: "hidden", scrollBehavior: "smooth" }}
+    >
+      <Snow />
       <div className="bg-no-repeat bg-cover bg-center" style={backgroundImage}>
-        <NavbarMenu />
+        {scrollTop > 40 ? (
+          <NavbarMenu background={"bg-[#884bdf]"} />
+        ) : (
+          <NavbarMenu background={"bg-transparent"} />
+        )}
         <Hero />
       </div>
+
       <Why />
       <What />
       <Features />

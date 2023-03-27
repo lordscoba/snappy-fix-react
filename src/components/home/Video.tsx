@@ -9,6 +9,7 @@ const Video = () => {
   };
   return (
     <section
+      id="video"
       className="h-auto bg-no-repeat bg-cover bg-center bg-fixed bg-clip-border p-3 md:p-8"
       style={backgroundImage}
     >
