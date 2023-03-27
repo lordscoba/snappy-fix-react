@@ -7,6 +7,7 @@ const What = () => {
   };
   return (
     <section
+      id="what"
       className="h-full bg-no-repeat bg-cover bg-center bg-fixed bg-clip-border p-5"
       style={backgroundImage}
     >

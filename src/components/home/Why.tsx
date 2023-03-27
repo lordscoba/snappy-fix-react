@@ -6,7 +6,7 @@ import { IconContext } from "react-icons";
 
 const Why = () => {
   return (
-    <section className="flex flex-col p-5 md:p-24 space-y-14">
+    <section id="why" className="flex flex-col p-5 md:p-24 space-y-14">
       <h3 className="text-center text-5xl text-[#5b32b4] hover:text-6xl">
         Why are we Special
       </h3>

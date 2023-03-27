@@ -4,7 +4,7 @@ import { IconContext } from "react-icons";
 
 const Features = () => {
   return (
-    <section className="">
+    <section id="features">
       <div className="flex flex-col space-y-8 py-24 md:p-16">
         <h3 className="text-center text-4xl text-[#5b32b4] hover:text-6xl md:text-6xl">
           Some Awesome Features We Can Integrate To Your Website

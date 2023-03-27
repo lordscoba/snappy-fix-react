@@ -6,6 +6,33 @@
   animation: profile-animate 6s linear 1s infinite;
 }
 
+.move-style {
+  width: 6rem;
+  animation-name: confetti;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  user-select: none;
+  pointer-events: none;
+  z-index: 1;
+  /* animation-duration: 2.5s;
+  animation-timing-function: linear;
+  animation-delay: 0.5s;
+  animation-iteration-count: infinite; */
+  /* 2.5s linear 0.5s infinite; */
+}
+
+@keyframes confetti {
+  0% {
+    transform: translate(0px, 2px);
+    /* transform: (-10vw); */
+  }
+
+  100% {
+    transform: translate(500px, 700px);
+    /* transform: translateX(100vw); */
+  }
+}
+
 @keyframes profile-animate {
   0% {
     border-top-right-radius: 0rem;

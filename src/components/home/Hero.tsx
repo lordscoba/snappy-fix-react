@@ -1,12 +1,11 @@
-import React from "react";
 import { WelcomeImg } from "../../images/bg-img";
 
 const Hero = () => {
   return (
-    <section className="overflow-auto">
-      <div className="flex items-stretch h-[700px] space-x-3">
+    <section id="hero" className="overflow-clip">
+      <div className="flex items-stretch h-[100vh] space-x-3">
         <div className="flex flex-col self-center p-4">
-          <h1 className="text-white text-6xl font-medium animate__animated  animate__bounceInDown">
+          <h1 className="text-white text-6xl md:text-9xl font-medium animate__animated  animate__bounceInDown">
             Snappy-Fix Tech
           </h1>
           <p className="text-white animate__animated  animate__bounceInLeft text-lg break-all whitespace-normal w-full">
@@ -45,5 +44,4 @@ const Hero = () => {
     </section>
   );
 };
-
 export default Hero;

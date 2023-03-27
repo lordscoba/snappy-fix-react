@@ -2,7 +2,10 @@ import React from "react";
 
 const Join = () => {
   return (
-    <section className="bg-gradient-to-r  from-[#a765e1] to-[#7973ed]">
+    <section
+      id="join"
+      className="bg-gradient-to-r  from-[#a765e1] to-[#7973ed] overflow-hidden"
+    >
       <div className="flex flex-wrap p-16 md:p-24 justify-center space-y-6 md:space-y-0 md:justify-between">
         <div className="flex flex-col space-y-3 w-full max-w-[30rem]">
           <h2 className="text-white text-4xl">Join our Happy clients</h2>

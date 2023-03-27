@@ -18,6 +18,7 @@ const Pricing = () => {
   };
   return (
     <section
+      id="pricing"
       style={backgroundImage}
       className="h-full bg-no-repeat bg-cover bg-center bg-fixed bg-clip-border py-5"
     >
