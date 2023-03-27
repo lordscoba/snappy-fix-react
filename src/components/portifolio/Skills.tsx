@@ -1,4 +1,3 @@
-import React from "react";
 import { IconContext } from "react-icons";
 import { BsPatchCheck } from "react-icons/bs";
 import { data } from "./Data";

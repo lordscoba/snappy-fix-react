@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { SnappyLogoFav } from "../../images/logo";
 type naver = {
   background: any;

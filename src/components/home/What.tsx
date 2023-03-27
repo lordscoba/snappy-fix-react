@@ -1,4 +1,3 @@
-import React from "react";
 import { Footer, Cart1 } from "../../images/bg-img";
 
 const What = () => {

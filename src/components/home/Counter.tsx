@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Rt } from "../../images/bg-img";
 import { ImArrowDown } from "react-icons/im";
 import { RiEmotionHappyLine } from "react-icons/ri";

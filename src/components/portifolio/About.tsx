@@ -1,4 +1,3 @@
-import React from "react";
 import { FiAward } from "react-icons/fi";
 import { AiOutlineFilePdf } from "react-icons/ai";
 import { IconContext } from "react-icons";

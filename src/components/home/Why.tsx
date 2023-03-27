@@ -1,4 +1,3 @@
-import React from "react";
 import { MdOutlinePhoneAndroid } from "react-icons/md";
 import { TfiRulerPencil } from "react-icons/tfi";
 import { CiSettings } from "react-icons/ci";

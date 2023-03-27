@@ -1,4 +1,3 @@
-import React from "react";
 import { data } from "../portifolio/Data";
 import { Link } from "react-router-dom";
 import { IconContext } from "react-icons";

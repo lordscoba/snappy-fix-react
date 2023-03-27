@@ -1,4 +1,3 @@
-import React from "react";
 import { Footer } from "../../images/bg-img";
 
 const price1: number = 80;
