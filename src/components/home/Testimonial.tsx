@@ -43,7 +43,7 @@ const Testimonial = () => {
   useEffect(() => {
     setTimeout(() => {
       changePlus();
-    }, 3000);
+    }, 7000);
   });
 
   return (
