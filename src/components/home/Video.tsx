@@ -1,4 +1,3 @@
-import React from "react";
 import { Footer, Snappy3 } from "../../images/bg-img";
 import { BsPlayCircleFill } from "react-icons/bs";
 import { IconContext } from "react-icons";

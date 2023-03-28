@@ -1,4 +1,3 @@
-import React from "react";
 import { Footer as Footer_bg } from "../../images/bg-img";
 import {
   FaFacebookF,

@@ -1,4 +1,3 @@
-import React from "react";
 import { TfiUser, TfiPulse, TfiDashboard } from "react-icons/tfi";
 import { IconContext } from "react-icons";
 

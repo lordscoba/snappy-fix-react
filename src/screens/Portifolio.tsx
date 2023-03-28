@@ -1,4 +1,3 @@
-import React from "react";
 import { Heroo, About, Skills } from "../components/portifolio";
 
 type Props = {};
