@@ -1,4 +1,4 @@
-import { Chigoz1, Ebus, Seyi } from "../../images/team-img";
+import { Chigoz1, Ebus, Seyi, Pascal } from "../../images/team-img";
 
 type mine = {
   skill_type: string;
@@ -171,5 +171,44 @@ export const data: Array<Tester> = [
     projects: 30,
     about: "I am a good deveoper",
     cv: Seyi,
+  },
+  {
+    id: 4,
+    name: "Osunkwor Pascal",
+    skills: [
+      {
+        skill_main: "Graphics Designer",
+        skill_level: [
+          {
+            skill_type: "Photoshop",
+            skill_level: "Expert",
+          },
+          {
+            skill_type: "Adobe after Effect",
+            skill_level: "Expert",
+          },
+        ],
+      },
+      {
+        skill_main: "UI/UX designer",
+        skill_level: [
+          {
+            skill_type: "Figma",
+            skill_level: "Expert",
+          },
+        ],
+      },
+    ],
+    text: "I am a good Designer",
+    image: Pascal,
+    github_link: "github.com/pascal",
+    linkdln_link: "linkdln.com/pascal",
+    twitter_link: "twitter.com/pascal",
+    fb_link: "facebook.com/pascal",
+    instagram_link: "instagram.com/pascal",
+    years_experience: 5,
+    projects: 30,
+    about: "I am a good designer",
+    cv: Pascal,
   },
 ];
