@@ -1,7 +1,7 @@
-import { data } from "../portifolio/Data";
-import { Link } from "react-router-dom";
 import { IconContext } from "react-icons";
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
+import { Link } from "react-router-dom";
+import { data } from "../portifolio/Data";
 
 type Tests = {
   id: number;
@@ -11,6 +11,7 @@ type Tests = {
   fb_link: string;
   twitter_link: string;
   instagram_link: string;
+  link_tree?: string;
 };
 
 const Team = () => {
@@ -33,6 +34,7 @@ const Team = () => {
               fb_link={item.fb_link}
               twitter_link={item.twitter_link}
               instagram_link={item.instagram_link}
+              link_tree={item.link_tree}
             />
           );
         })}
@@ -49,6 +51,7 @@ const Details = ({
   fb_link,
   twitter_link,
   instagram_link,
+  link_tree,
 }: Tests) => {
   // console.log(data[id - 1].skills);
   return (
@@ -58,8 +61,9 @@ const Details = ({
         src={image}
         alt=""
       />
-      <h3 className="text-[#5b32b4] text-2xl">{name}</h3>
-
+      <a href={link_tree} target="_blank" rel="noreferrer">
+        <h3 className="text-[#5b32b4] text-2xl">{name}</h3>
+      </a>
       <p className="text-[#b5aec4]">
         {data[id - 1].skills.map((p, index) => {
           return (

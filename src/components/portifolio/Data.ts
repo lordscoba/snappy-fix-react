@@ -1,4 +1,4 @@
-import { Chigoz1, Ebus, Seyi, Pascal } from "../../images/team-img";
+import { Chigoz1, Ebus, Pascal, Seyi } from "../../images/team-img";
 
 type mine = {
   skill_type: string;
@@ -23,6 +23,7 @@ export type Tester = {
   projects: number;
   about: string;
   cv: any;
+  link_tree?: string;
 };
 
 export const data: Array<Tester> = [
@@ -160,6 +161,7 @@ export const data: Array<Tester> = [
         ],
       },
     ],
+    link_tree: "https://linktr.ee/johnakande",
     text: "I am a good developer",
     image: Seyi,
     github_link: "github.com/seyi",
