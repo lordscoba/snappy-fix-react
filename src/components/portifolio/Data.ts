@@ -135,6 +135,19 @@ export const data: Array<Tester> = [
     name: "John Akande",
     skills: [
       {
+        skill_main: "Web Designer",
+        skill_level: [
+          {
+            skill_type: "Blog",
+            skill_level: "Expert",
+          },
+          {
+            skill_type: "E-commerce",
+            skill_level: "Intermediate",
+          },
+        ],
+      },
+      {
         skill_main: "Graphics Designer",
         skill_level: [
           {
@@ -148,15 +161,19 @@ export const data: Array<Tester> = [
         ],
       },
       {
-        skill_main: "Wordpress",
+        skill_main: "SEO",
         skill_level: [
           {
-            skill_type: "Blog",
+            skill_type: "Keyword Research",
             skill_level: "Expert",
           },
           {
-            skill_type: "E-commerce",
-            skill_level: "Intermediate",
+            skill_type: "Indexing",
+            skill_level: "Expert",
+          },
+          {
+            skill_type: "Backlinking",
+            skill_level: "Expert",
           },
         ],
       },
