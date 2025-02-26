@@ -1,4 +1,4 @@
-export { default as Chigoz1 } from "./chigoz1.jpg";
-export { default as Ebus } from "./ebus.jpeg";
-export { default as Seyi } from "./seyi.jpeg";
+export { default as Chigozie2 } from "./chigozie2.jpeg";
+export { default as Chris2 } from "./chris2.jpeg";
 export { default as Pascal } from "./pascal.jpeg";
+export { default as Seyi } from "./seyi.jpeg";

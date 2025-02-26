@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { SnappyLogoFav } from "../../images/logo";
+import { SnappyFixLogo } from "../../images/logo";
 type naver = {
   background: any;
 };
@@ -24,7 +24,7 @@ const Nav = ({ background }: naver) => {
     <nav className={`fixed p-6 ${background} w-full z-50`}>
       <div className="flex items-center justify-between">
         <div className="">
-          <img className="w-14" src={SnappyLogoFav} alt="logo" />
+          <img className="w-[7rem]" src={SnappyFixLogo} alt="logo" />
         </div>
         <div className="hidden md:flex md:space-x-2 lg:space-x-5 text-white">
           <a href="#hero">Home</a>
