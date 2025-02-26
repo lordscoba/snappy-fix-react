@@ -1,4 +1,4 @@
-import { Chigoz1, Ebus, Pascal, Seyi } from "../../images/team-img";
+import { Chigozie2, Chris2, Pascal, Seyi } from "../../images/team-img";
 
 type mine = {
   skill_type: string;
@@ -35,7 +35,43 @@ export const data: Array<Tester> = [
         skill_main: "FrontEnd Development",
         skill_level: [
           {
-            skill_type: "HTMl",
+            skill_type: "HTML",
+            skill_level: "Expert",
+          },
+          {
+            skill_type: "CSS",
+            skill_level: "Expert",
+          },
+          {
+            skill_type: "JavaScript",
+            skill_level: "Expert",
+          },
+          {
+            skill_type: "Jquery",
+            skill_level: "Expert",
+          },
+          {
+            skill_type: "Bootstrap",
+            skill_level: "Expert",
+          },
+          {
+            skill_type: "TailwindCss",
+            skill_level: "Expert",
+          },
+          {
+            skill_type: "Redux",
+            skill_level: "Expert",
+          },
+          {
+            skill_type: "W3.Css",
+            skill_level: "Expert",
+          },
+          {
+            skill_type: "React.js",
+            skill_level: "Intermediate",
+          },
+          {
+            skill_type: "Laravel",
             skill_level: "Expert",
           },
         ],
@@ -49,17 +85,82 @@ export const data: Array<Tester> = [
           },
           {
             skill_type: "Laravel",
-            skill_level: "Intermediate",
+            skill_level: "Expert",
           },
           {
             skill_type: "Node.js",
-            skill_level: "Intermediates",
+            skill_level: "Expert",
+          },
+          {
+            skill_type: "Express.js",
+            skill_level: "Expert",
+          },
+          {
+            skill_type: "Golang",
+            skill_level: "Expert",
+          },
+          {
+            skill_type: "Mysql",
+            skill_level: "Expert",
+          },
+          {
+            skill_type: "MongoDB",
+            skill_level: "Expert",
+          },
+          {
+            skill_type: "Postgresql",
+            skill_level: "Expert",
+          },
+          {
+            skill_type: "Python",
+            skill_level: "Expert",
+          },
+          {
+            skill_type: "TypeScript",
+            skill_level: "Expert",
+          },
+          {
+            skill_type: "JavaScript",
+            skill_level: "Expert",
+          },
+          {
+            skill_type: "FastAPI",
+            skill_level: "Expert",
+          },
+          {
+            skill_type: "Firebase",
+            skill_level: "Expert",
+          },
+        ],
+      },
+      {
+        skill_main: "Mobile Development",
+        skill_level: [
+          {
+            skill_type: "Flutter",
+            skill_level: "Expert",
+          },
+          {
+            skill_type: "Dart",
+            skill_level: "Expert",
+          },
+          {
+            skill_type: "Firebase",
+            skill_level: "Expert",
+          },
+          {
+            skill_type: "Android Studio",
+            skill_level: "Expert",
+          },
+          {
+            skill_type: "Xcode",
+            skill_level: "Expert",
           },
         ],
       },
     ],
     text: "I am a good developer",
-    image: Ebus,
+    image: Chris2,
     github_link: "github.com/lordscoba",
     linkdln_link: "linkdln.com/lordscoba",
     twitter_link: "twitter.com/lordscoba",
@@ -68,7 +169,7 @@ export const data: Array<Tester> = [
     years_experience: 5,
     projects: 30,
     about: "I am a good deveoper",
-    cv: Ebus,
+    cv: Chris2,
   },
   {
     id: 2,
@@ -81,6 +182,34 @@ export const data: Array<Tester> = [
             skill_type: "HTMl",
             skill_level: "Expert",
           },
+          {
+            skill_type: "CSS",
+            skill_level: "Expert",
+          },
+          {
+            skill_type: "JavaScript",
+            skill_level: "Expert",
+          },
+          {
+            skill_type: "Jquery",
+            skill_level: "Expert",
+          },
+          {
+            skill_type: "Bootstrap",
+            skill_level: "Expert",
+          },
+          {
+            skill_type: "TailwindCss",
+            skill_level: "Expert",
+          },
+          {
+            skill_type: "React.js",
+            skill_level: "Expert",
+          },
+          {
+            skill_type: "Redux",
+            skill_level: "Expert",
+          },
         ],
       },
       {
@@ -95,8 +224,60 @@ export const data: Array<Tester> = [
             skill_level: "Intermediate",
           },
           {
+            skill_type: "JavaScript",
+            skill_level: "Expert",
+          },
+          {
+            skill_type: "Express.js",
+            skill_level: "Expert",
+          },
+          {
+            skill_type: "Rust",
+            skill_level: "Expert",
+          },
+          {
             skill_type: "Node.js",
             skill_level: "Intermediates",
+          },
+          {
+            skill_type: "Golang",
+            skill_level: "Expert",
+          },
+          {
+            skill_type: "Mysql",
+            skill_level: "Expert",
+          },
+          {
+            skill_type: "Postgresql",
+            skill_level: "Expert",
+          },
+          {
+            skill_type: "MongoDB",
+            skill_level: "Expert",
+          },
+          {
+            skill_type: "Python",
+            skill_level: "Expert",
+          },
+          {
+            skill_type: "FastAPI",
+            skill_level: "Expert",
+          },
+          {
+            skill_type: "Firebase",
+            skill_level: "Expert",
+          },
+          {
+            skill_type: "Django",
+            skill_level: "Expert",
+          },
+          {
+            skill_type: "TypeScript",
+            skill_level: "Expert",
+          },
+          {
+            skill_type: "Machine Learning",
+            skill_level: "Expert",
           },
         ],
       },
@@ -109,17 +290,45 @@ export const data: Array<Tester> = [
           },
           {
             skill_type: "AWS",
-            skill_level: "Intermediate",
+            skill_level: "Expert",
           },
           {
             skill_type: "Azure",
-            skill_level: "Intermediates",
+            skill_level: "Expert",
+          },
+          {
+            skill_type: "Docker",
+            skill_level: "Expert",
+          },
+          {
+            skill_type: "Kubernetes",
+            skill_level: "Expert",
+          },
+          {
+            skill_type: "Jenkins",
+            skill_level: "Expert",
+          },
+          {
+            skill_type: "Git",
+            skill_level: "Expert",
+          },
+          {
+            skill_type: "Github",
+            skill_level: "Expert",
+          },
+          {
+            skill_type: "Digital Ocean",
+            skill_level: "Expert",
+          },
+          {
+            skill_type: "Heroku",
+            skill_level: "Expert",
           },
         ],
       },
     ],
-    text: "I am a good developer",
-    image: Chigoz1,
+    text: "I am a good developer, ",
+    image: Chigozie2,
     github_link: "github.com/greg",
     linkdln_link: "linkdln.com/greg",
     twitter_link: "twitter.com/greg",
@@ -128,7 +337,7 @@ export const data: Array<Tester> = [
     years_experience: 4,
     projects: 30,
     about: "I am a good deveoper",
-    cv: Chigoz1,
+    cv: Chigozie2,
   },
   {
     id: 3,

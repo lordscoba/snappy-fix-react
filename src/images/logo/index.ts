@@ -1,1 +1,1 @@
-export { default as SnappyLogoFav } from "./snappy-logo-fav.png";
+export { default as SnappyFixLogo } from "./snappy-fix-logo.png";

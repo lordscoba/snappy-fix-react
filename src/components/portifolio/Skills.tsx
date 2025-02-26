@@ -1,7 +1,7 @@
 import { IconContext } from "react-icons";
 import { BsPatchCheck } from "react-icons/bs";
-import { data } from "./Data";
 import { useLocation } from "react-router-dom";
+import { data } from "./Data";
 
 const Skills = () => {
   const location = useLocation().pathname;
@@ -12,7 +12,7 @@ const Skills = () => {
     <section id="skills" className="bg-[#fafafa] p-5">
       <h2 className="text-center text-5xl font-bold pt-10">Skills</h2>
       <p className="text-center my-5">My introduction</p>
-      <div className="flex flex-wrap md:space-x-6 space-y-4 md:space-y-0 justify-center md:justify-even">
+      <div className="flex flex-wrap md:space-x-6 space-y-4 md:space-y-4 justify-center md:justify-even">
         {single.skills.map((p, index) => {
           return (
             <div

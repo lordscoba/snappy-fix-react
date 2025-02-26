@@ -18,7 +18,7 @@ const Hero = () => {
                   <input
                     className="bg-[#9572e8] p-4 rounded-full outline-none"
                     type="text"
-                    placeholder="name@company.com"
+                    placeholder="support@snappy-fix.com"
                   />
                 </div>
                 <div className="">
