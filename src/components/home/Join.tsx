@@ -1,21 +1,26 @@
 const Join = () => {
   return (
-    <section
-      id="join"
-      className="bg-gradient-to-r  from-[#a765e1] to-[#7973ed] overflow-hidden"
-    >
-      <div className="flex flex-wrap p-16 md:p-24 justify-center space-y-6 md:space-y-0 md:justify-between">
-        <div className="flex flex-col space-y-3 w-full max-w-[30rem]">
-          <h2 className="text-white text-4xl">Join our Happy clients</h2>
-          <p className="text-white">
+    <section id="join" className="bg-gradient-to-r from-[#a765e1] to-[#7973ed]">
+      <div className="max-w-7xl mx-auto px-6 py-16 md:py-24 flex flex-col md:flex-row items-center justify-between gap-8">
+        {/* Text */}
+        <div className="max-w-xl space-y-4 text-center md:text-left">
+          <h2 className="text-white text-3xl md:text-4xl font-semibold">
+            Join businesses growing with Snappy-fix Technologies
+          </h2>
+
+          <p className="text-white/90 text-base md:text-lg">
             Find the perfect website of your dreams — 100% satisfaction
             guaranteed.
           </p>
         </div>
-        <div className="">
+
+        {/* Button */}
+        <div>
           <button
-            type="submit"
-            className="whitespace-nowrap py-3 px-8 rounded-r-3xl rounded-t-3xl bg-white hover:bg-[#5b32b4] text-[#fb397d] hover:text-white  animate__animated animate__slow animate__bounceInDown animate__infinite"
+            type="button"
+            className="py-3 px-10 rounded-3xl bg-white text-[#fb397d] font-medium
+             shadow-lg transition-colors duration-300 hover:bg-[#5b32b4] hover:text-white
+             animate-soft-bounce"
           >
             Get Started
           </button>

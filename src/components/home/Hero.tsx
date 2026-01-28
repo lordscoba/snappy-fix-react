@@ -1,47 +1,69 @@
+import { useState } from "react";
 import { WelcomeImg } from "../../images/bg-img";
 
 const Hero = () => {
+  const [email, setEmail] = useState("");
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log("Subscribed:", email);
+  };
+
   return (
-    <section id="hero" className="overflow-clip">
-      <div className="flex items-stretch h-[100vh] space-x-3">
-        <div className="flex flex-col self-center p-4">
-          <h1 className="text-white text-6xl md:text-9xl font-medium animate__animated  animate__bounceInDown">
+    <section
+      id="hero"
+      className="relative min-h-screen overflow-hidden flex items-center"
+    >
+      <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-6 gap-10">
+        {/* Left content */}
+        <div className="z-10 max-w-xl">
+          <h1 className="text-white text-5xl md:text-8xl font-semibold animate__animated animate__bounceInDown">
             Snappy-Fix Tech
           </h1>
-          <p className="text-white animate__animated  animate__bounceInLeft text-lg break-all whitespace-normal w-full">
+
+          <p className="text-white mt-4 text-lg animate__animated animate__bounceInLeft">
             Build any website of your dreams
           </p>
-          <div className="mt-20 z-30">
-            <form action="">
-              <div className="flex flex-wrap space-y-2 md:space-x-3">
-                <div className="">
-                  <input
-                    className="bg-[#9572e8] p-4 rounded-full outline-none"
-                    type="text"
-                    placeholder="support@snappy-fix.com"
-                  />
-                </div>
-                <div className="">
-                  <button
-                    className="text-white bg-[#fb397d] p-4 rounded-t-3xl rounded-r-3xl px-14"
-                    type="submit"
-                  >
-                    Subscribe
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
+
+          <form
+            onSubmit={handleSubmit}
+            className="mt-10 flex flex-col sm:flex-row gap-3"
+          >
+            <label htmlFor="email" className="sr-only">
+              Email address
+            </label>
+
+            <input
+              id="email"
+              type="email"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="support@snappy-fix.com"
+              className="bg-[#9572e8] p-4 rounded-full outline-none text-white placeholder:text-white/70 w-full"
+            />
+
+            <button
+              type="submit"
+              className="text-white bg-[#fb397d] px-10 py-4 rounded-full hover:opacity-90 transition"
+            >
+              Subscribe
+            </button>
+          </form>
         </div>
-        <div className="hidden self-end ml-[-130px] mb-[-190px] md:flex z-30">
+
+        {/* Right image */}
+        <div className="hidden md:block relative z-10">
           <img
-            className="w-[50rem] animate__animated animate__pulse animate__infinite"
             src={WelcomeImg}
-            alt=""
+            alt="Welcome illustration"
+            loading="lazy"
+            className="w-[40rem] animate__animated animate__pulse animate__infinite"
           />
         </div>
       </div>
     </section>
   );
 };
+
 export default Hero;

@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Layout } from "./components/Layout";
-import { Home, Portifolio } from "./screens";
+import { Home, Portifolio, PushNotifications } from "./screens";
 
 function App() {
   return (
@@ -9,6 +9,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/portifolio/:id" element={<Portifolio />} />
+          <Route path="/notifications" element={<PushNotifications />} />
         </Routes>
       </Layout>
     </BrowserRouter>

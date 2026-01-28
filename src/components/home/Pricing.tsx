@@ -1,160 +1,94 @@
 import { Footer } from "../../images/bg-img";
 
-const price1: number = 80;
-const price2: number = 500;
-const starting1: number = 40;
-const starting2: number = 350;
-const weeks1: number = 2;
-const weeks2: number = 4;
-const text_color1: string = "#ffffff"; //white
-const text_color2: string = "#726a84"; //general
-const text_color3: string = "#fb397d"; //red
-const text_color4: string = "#5b32b4"; //purple
+type Plan = {
+  title: string;
+  price: number;
+  starting: number;
+  weeks: number;
+  featured?: boolean;
+};
+
+const plans: Plan[] = [
+  { title: "Blog Websites", price: 80, starting: 40, weeks: 2 },
+  { title: "Investment Websites", price: 500, starting: 350, weeks: 4 },
+  {
+    title: "E-commerce Websites",
+    price: 500,
+    starting: 350,
+    weeks: 4,
+    featured: true,
+  },
+  { title: "Education Websites", price: 500, starting: 350, weeks: 4 },
+];
 
 const Pricing = () => {
-  const backgroundImage: any = {
-    backgroundImage: `url(${Footer})`,
-  };
   return (
     <section
       id="pricing"
-      style={backgroundImage}
-      className="h-full bg-no-repeat bg-cover bg-center bg-fixed bg-clip-border py-5"
+      className="bg-cover bg-center py-20"
+      style={{ backgroundImage: `url(${Footer})` }}
     >
-      <div className="flex flex-col p-0 md:p-0 space-y-14">
-        <h3 className="text-center text-5xl text-[#5b32b4] hover:text-6xl">
-          Pricing Plan
-        </h3>
-        <hr className="text-white bg-[#fb397d] border-none h-1 w-1/12 mx-auto hover:w-1/2 mt-0" />
-        {/* <div className="flex flex-col space-y-2 md:space-x-0 mx-auto md:flex-row px-20 w-full"> */}
-        <div className="flex flex-wrap justify-center space-y-2">
-          <Snippet
-            title="Blog Websites"
-            price={price1}
-            starting={starting1}
-            weeks={weeks1}
-            title_color="#ffffff"
-            button_color={text_color2}
-            title_text_color={text_color4}
-            price_color="#fb397d"
-            footer_color={text_color1}
-          />
-          <Snippet
-            title="Investment Websites"
-            price={price2}
-            starting={starting2}
-            weeks={weeks2}
-            title_color="#ffffff"
-            button_color={text_color2}
-            title_text_color={text_color4}
-            price_color="#fb397d"
-            footer_color={text_color1}
-          />
-          <Snippet
-            title="E-commerce Websites"
-            price={price2}
-            starting={starting2}
-            weeks={weeks2}
-            title_color="#a865e1"
-            button_color="#a865e1"
-            title_text_color={text_color1}
-            price_color={text_color1}
-            footer_color={text_color1}
-          />
-          <Snippet
-            title="Education Websites"
-            price={price2}
-            starting={starting2}
-            weeks={weeks2}
-            title_color="#ffffff"
-            button_color={text_color2}
-            title_text_color={text_color4}
-            price_color={text_color3}
-            footer_color={text_color1}
-          />
+      <div className="max-w-7xl mx-auto px-6 space-y-14">
+        {/* Header */}
+        <div className="text-center space-y-4">
+          <h2 className="text-4xl md:text-5xl font-semibold text-[#5b32b4] transition-transform hover:scale-105">
+            Pricing Plans
+          </h2>
+          <div className="h-1 w-16 bg-[#fb397d] mx-auto rounded transition-all hover:w-32" />
+        </div>
+
+        {/* Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {plans.map((plan, index) => (
+            <PriceCard key={index} plan={plan} />
+          ))}
         </div>
       </div>
     </section>
   );
 };
 
-type Props = {
-  title: string;
-  price: number;
-  starting: number;
-  weeks: number;
-  title_color: string;
-  button_color: string;
-  title_text_color: string;
-  price_color: string;
-  footer_color: string;
+type CardProps = {
+  plan: Plan;
 };
 
-const Snippet = ({
-  title,
-  price,
-  starting,
-  weeks,
-  title_color,
-  button_color,
-  title_text_color,
-  price_color,
-  footer_color,
-}: Props) => {
+const PriceCard = ({ plan }: CardProps) => {
   return (
-    <>
-      <div className="p-0 grid place-items-center border-2 rounded-t-3xl rounded-r-3xl w-full max-w-[17rem] hover:drop-shadow-2xl bg-white">
-        <div
-          className="rounded-t-3xl w-full p-9 text-center"
-          style={{
-            backgroundColor: title_color,
-          }}
-        >
-          <h5
-            className="text-1xl font-normal"
-            style={{
-              color: title_text_color,
-            }}
-          >
-            {title}
-          </h5>
-          <h2 className="flex flex-row justify-center">
-            <span
-              className="self-start text-lg"
-              style={{
-                color: price_color,
-              }}
-            >
-              $
-            </span>
-            <span
-              className="text-5xl"
-              style={{
-                color: price_color,
-              }}
-            >
-              {price}
-            </span>
-          </h2>
-        </div>
-        <hr className="h-[0.1rem] bg-gray-400 w-full" />
-        <p className="p-2 text-[#726a84]">starting from ${starting}</p>
-        <hr className="h-[0.1rem] bg-gray-400 w-full" />
-        <p className="p-2 text-[#726a84]">{weeks} weeks delivery date</p>
-        <hr className="h-[0.1rem] bg-gray-400 w-full" />
-        <p className="p-2 text-[#726a84]">Free hosting</p>
-        <hr className="h-[0.1rem] bg-gray-400 w-full" />
-        <p
-          className="py-2 w-full text-center rounded-br-3xl"
-          style={{
-            backgroundColor: button_color,
-            color: footer_color,
-          }}
-        >
-          Select Plan
-        </p>
+    <div
+      className={`relative overflow-hidden rounded-3xl border bg-white p-8 text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl
+      ${plan.featured ? "border-[#fb397d] ring-2 ring-[#fb397d]/30" : ""}`}
+    >
+      {plan.featured && (
+        <span className="absolute top-4 right-4 bg-[#fb397d] text-white text-xs px-3 py-1 rounded-full">
+          Popular
+        </span>
+      )}
+
+      <h3 className="text-xl font-semibold text-[#5b32b4]">{plan.title}</h3>
+
+      <div className="mt-6 flex justify-center items-start gap-1">
+        <span className="text-lg text-[#fb397d]">$</span>
+        <span className="text-5xl font-bold text-[#fb397d]">{plan.price}</span>
       </div>
-    </>
+
+      <ul className="mt-8 space-y-3 text-gray-600">
+        <li>Starting from ${plan.starting}</li>
+        <li>{plan.weeks} weeks delivery</li>
+        <li>Free hosting</li>
+        <li>Responsive design</li>
+      </ul>
+
+      <button
+        className={`mt-10 w-full rounded-full py-3 font-medium transition
+        ${
+          plan.featured
+            ? "bg-[#fb397d] text-white hover:opacity-90"
+            : "bg-[#5b32b4] text-white hover:bg-[#47238f]"
+        }`}
+      >
+        Select Plan
+      </button>
+    </div>
   );
 };
 

@@ -1,66 +1,70 @@
-import { Footer as Footer_bg } from "../../images/bg-img";
+import { Footer as FooterBg } from "../../images/bg-img";
 import {
   FaFacebookF,
   FaTwitter,
   FaInstagram,
   FaGooglePlusG,
 } from "react-icons/fa";
-import { IconContext } from "react-icons";
-import { TbMinusVertical } from "react-icons/tb";
 
 const Footer = () => {
-  const backgroundImage: any = {
-    backgroundImage: `url(${Footer_bg})`,
-  };
   return (
-    <section
-      className="bg-no-repeat bg-cover bg-center bg-fixed bg-clip-border"
-      style={backgroundImage}
+    <footer
+      className="bg-cover bg-center bg-fixed py-20"
+      style={{ backgroundImage: `url(${FooterBg})` }}
     >
-      <div className="flex flex-col justify-center space-y-6 py-24">
-        <h2 className="text-[#5b32b4] text-7xl font-bold text-center animate__flash  animate__animated animate__slower animate__flash  animate__infinite">
+      <div className="max-w-6xl mx-auto px-6 flex flex-col items-center space-y-10">
+        {/* Brand */}
+        <h2 className="brand-fall text-[#5b32b4] text-4xl md:text-6xl font-bold tracking-tight">
           Snappy-fix Tech
         </h2>
-        <div className="flex flex-row space-x-2 justify-center">
-          <button className="bg-[#9b69e4] p-2 rounded-t-md rounded-r-md">
-            <IconContext.Provider value={{ size: "18px", color: "#fff" }}>
-              <FaFacebookF />
-            </IconContext.Provider>
-          </button>
-          <button className="bg-[#fb397d] p-2 rounded-t-md rounded-r-md">
-            <IconContext.Provider value={{ size: "18px", color: "#fff" }}>
-              <FaTwitter />
-            </IconContext.Provider>
-          </button>
-          <button className="bg-[#9b69e4] p-2 rounded-t-md rounded-r-md">
-            <IconContext.Provider value={{ size: "18px", color: "#fff" }}>
-              <FaInstagram />
-            </IconContext.Provider>
-          </button>
-          <button className="bg-[#9b69e4] p-2 rounded-t-md rounded-r-md">
-            <IconContext.Provider value={{ size: "18px", color: "#fff" }}>
-              <FaGooglePlusG />
-            </IconContext.Provider>
-          </button>
+
+        {/* Socials */}
+        <div className="flex gap-4">
+          <SocialButton icon={<FaFacebookF />} />
+          <SocialButton icon={<FaTwitter />} />
+          <SocialButton icon={<FaInstagram />} />
+          <SocialButton icon={<FaGooglePlusG />} />
         </div>
-        <div className="flex flex-wrap justify-center">
-          <button className="text-[#726a84]">About</button>
-          <IconContext.Provider value={{ size: "28px", color: "#726a84" }}>
-            <TbMinusVertical />
-          </IconContext.Provider>
-          <button className="text-[#726a84]">Terms & Conditions</button>
-          <IconContext.Provider value={{ size: "28px", color: "#726a84" }}>
-            <TbMinusVertical />
-          </IconContext.Provider>
-          <button className="text-[#726a84]">Privacy Policy</button>
-          <IconContext.Provider value={{ size: "28px", color: "#726a84" }}>
-            <TbMinusVertical />
-          </IconContext.Provider>
-          <button className="text-[#726a84]">Contact</button>
-        </div>
+
+        {/* Links */}
+        <nav className="flex flex-wrap justify-center gap-6 text-[#726a84] text-sm">
+          <FooterLink label="About" />
+          <FooterLink label="Terms & Conditions" />
+          <FooterLink label="Privacy Policy" />
+          <FooterLink label="Contact" />
+        </nav>
+
+        {/* Copyright */}
+        <p className="text-xs text-[#b5aec4]">
+          © {new Date().getFullYear()} Snappy-fix Technologies. All rights
+          reserved.
+        </p>
       </div>
-    </section>
+    </footer>
   );
 };
+
+const SocialButton = ({ icon }: { icon: React.ReactNode }) => (
+  <button
+    className="w-10 h-10 flex items-center justify-center rounded-full
+               bg-[#9b69e4] text-white
+               transition-all duration-300
+               hover:bg-[#fb397d] hover:scale-110 hover:shadow-lg"
+  >
+    {icon}
+  </button>
+);
+
+const FooterLink = ({ label }: { label: string }) => (
+  <button
+    className="relative text-[#726a84] transition hover:text-[#5b32b4]
+               after:absolute after:left-0 after:-bottom-1
+               after:h-[2px] after:w-0 after:bg-[#fb397d]
+               after:transition-all after:duration-300
+               hover:after:w-full"
+  >
+    {label}
+  </button>
+);
 
 export default Footer;
