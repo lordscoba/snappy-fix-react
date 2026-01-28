@@ -1,6 +1,11 @@
-
-import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { app, messaging, getFcmToken, onForegroundMessage } from "../../firebase";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
+import { getFcmToken, onForegroundMessage } from "../../firebase";
 
 export const HeaderBody: React.FC = () => {
   return (
@@ -14,9 +19,10 @@ export const HeaderBody: React.FC = () => {
           Receive Firebase Push Notifications
         </h1>
         <p className="mt-3 text-slate-600 max-w-2xl mx-auto">
-          Click the button below to enable notifications, get your device token, and receive
-          messages while this page is open. Background notifications appear via your browser’s
-          notification center when this tab is inactive.
+          Click the button below to enable notifications, get your device token,
+          and receive messages while this page is open. Background notifications
+          appear via your browser’s notification center when this tab is
+          inactive.
         </p>
       </div>
     </header>
@@ -24,9 +30,14 @@ export const HeaderBody: React.FC = () => {
 };
 
 export const PushBody: React.FC = () => {
-  const [permission, setPermission] = useState<NotificationPermission>(Notification.permission);
+  const [permission, setPermission] = useState<NotificationPermission>(
+    Notification.permission,
+  );
   const [token, setToken] = useState<string | null>(null);
-  const [lastMsg, setLastMsg] = useState<{ title?: string; body?: string } | null>(null);
+  const [lastMsg, setLastMsg] = useState<{
+    title?: string;
+    body?: string;
+  } | null>(null);
   const [loading, setLoading] = useState(false);
   const tokenRef = useRef<HTMLTextAreaElement>(null);
 
@@ -93,7 +104,7 @@ export const PushBody: React.FC = () => {
 
   const canEnable = useMemo(
     () => "Notification" in window && permission !== "granted",
-    [permission]
+    [permission],
   );
 
   const showLocalTest = useCallback(async () => {
@@ -122,8 +133,8 @@ export const PushBody: React.FC = () => {
                   permission === "granted"
                     ? "text-green-600 font-semibold"
                     : permission === "denied"
-                    ? "text-red-600 font-semibold"
-                    : "text-amber-600 font-semibold"
+                      ? "text-red-600 font-semibold"
+                      : "text-amber-600 font-semibold"
                 }
               >
                 {permission}
@@ -168,7 +179,9 @@ export const PushBody: React.FC = () => {
                   onClick={handleCopy}
                   disabled={!token}
                   className={`px-3 py-2 rounded-xl text-sm font-semibold ${
-                    token ? "bg-emerald-600 text-white hover:bg-emerald-700" : "bg-slate-300 text-slate-600"
+                    token
+                      ? "bg-emerald-600 text-white hover:bg-emerald-700"
+                      : "bg-slate-300 text-slate-600"
                   }`}
                 >
                   Copy Token
@@ -191,14 +204,16 @@ export const PushBody: React.FC = () => {
             {lastMsg ? (
               <div className="mt-4 space-y-1">
                 <p className="text-sm">
-                  <span className="font-semibold">Title:</span> {lastMsg.title ?? "—"}
+                  <span className="font-semibold">Title:</span>{" "}
+                  {lastMsg.title ?? "—"}
                 </p>
                 <p className="text-sm">
-                  <span className="font-semibold">Body:</span> {lastMsg.body ?? "—"}
+                  <span className="font-semibold">Body:</span>{" "}
+                  {lastMsg.body ?? "—"}
                 </p>
                 <p className="mt-2 text-xs text-slate-500">
-                  Tip: background messages appear as system notifications when the tab is hidden or the
-                  browser is in the background.
+                  Tip: background messages appear as system notifications when
+                  the tab is hidden or the browser is in the background.
                 </p>
               </div>
             ) : (
@@ -223,4 +238,4 @@ export const FooterBody: React.FC = () => {
   );
 };
 
-export default { HeaderBody, PushBody, FooterBody };
+// export default { HeaderBody, PushBody, FooterBody };
