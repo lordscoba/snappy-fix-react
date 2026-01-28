@@ -1,32 +1,38 @@
 import { Footer, Cart1 } from "../../images/bg-img";
 
 const What = () => {
-  const backgroundImage: any = {
+  const backgroundImage = {
     backgroundImage: `url(${Footer})`,
   };
+
   return (
     <section
       id="what"
-      className="h-full bg-no-repeat bg-cover bg-center bg-fixed bg-clip-border p-5"
+      className="bg-no-repeat bg-cover bg-center p-6 md:p-16"
       style={backgroundImage}
     >
-      <div className="flex flex-col md:flex-row space-y-5">
-        <div className="h-full w-full md:w1/2">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-10">
+        {/* Image */}
+        <div className="w-full md:w-1/2">
           <img
-            className="hover:w-[30rem] rounded-3xl object-cover w-full image-style"
             src={Cart1}
-            alt="My logo"
+            alt="Snappy-fix product preview"
+            loading="lazy"
+            className="rounded-3xl object-cover w-full transition-transform duration-300 hover:scale-105"
           />
         </div>
-        <div className="space-y-4 w-full md:w1/2 md:px-14">
-          <h3 className="font-normal text-6xl text-[#5b32b4]">
-            What are we known for
-          </h3>
-          <p>
-            Snappy-fix technologies is a web creation company fully equiped with
-            the skills needed to build all types of your business websites. This
-            ranges blogs websites to cutomized website designs of your dreams
-            applying finishing touches to embrace full functionality
+
+        {/* Text */}
+        <div className="w-full md:w-1/2 space-y-6 md:px-10">
+          <h2 className="font-semibold text-4xl md:text-6xl text-[#5b32b4]">
+            What Snappy-fix Technologies is known for in Web Development
+          </h2>
+
+          <p className="text-gray-700 leading-relaxed">
+            Snappy-fix Technologies is a web creation company fully equipped
+            with the skills needed to build all types of business websites. From
+            blogs to fully customized designs, we deliver polished solutions
+            that combine aesthetics with full functionality.
           </p>
         </div>
       </div>

@@ -1,4 +1,3 @@
-import React from "react";
 import Footer from "./Footer";
 
 type Props = {
@@ -7,8 +6,8 @@ type Props = {
 
 const Layout = ({ children }: Props) => {
   return (
-    <div className="">
-      <main>{children}</main>
+    <div className="flex flex-col min-h-screen">
+      <main className="flex-1">{children}</main>
       <Footer />
     </div>
   );

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import {
   Hero,
   Why,
@@ -13,26 +13,28 @@ import {
   ContactUs,
 } from "../components/home";
 import { NavbarMenu } from "../components/Layout";
-import { SnowPics } from "../images";
+import { SnowPics, SnowG, SnowC1, SnowC2 } from "../images";
 import { Snow } from "../screens";
 
-const Home = () => {
-  const [scrollTop, setScrollTop] = useState<any>(0);
-  const backgroundImage: any = {
-    backgroundImage: `url(${SnowPics})`,
-  };
+const backgrounds = [SnowPics, SnowG, SnowC1, SnowC2];
 
-  useEffect(() => {
-    const handleScroll = (event: any) => {
-      setScrollTop(window.scrollY);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+const Home = () => {
+  const [scrolled, setScrolled] = useState(false);
+
+  // Pick ONE random background per page load
+  const randomBg = useMemo(() => {
+    const index = Math.floor(Math.random() * backgrounds.length);
+    return backgrounds[index];
   }, []);
 
-  // console.log(scrollTop);
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 40);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <div
@@ -40,15 +42,13 @@ const Home = () => {
       style={{ overflowX: "hidden", scrollBehavior: "smooth" }}
     >
       <Snow />
-      <div className="bg-no-repeat bg-cover bg-center" style={backgroundImage}>
-        {scrollTop > 40 ? (
-          <NavbarMenu background={"bg-[#884bdf]"} />
-        ) : (
-          <NavbarMenu background={"bg-transparent"} />
-        )}
+      <div
+        className="bg-no-repeat bg-cover bg-center"
+        style={{ backgroundImage: `url(${randomBg})` }}
+      >
+        <NavbarMenu background={scrolled ? "bg-[#884bdf]" : "bg-transparent"} />
         <Hero />
       </div>
-
       <Why />
       <What />
       <Features />

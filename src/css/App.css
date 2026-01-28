@@ -6,26 +6,6 @@
   animation: profile-animate 6s linear 1s infinite;
 }
 
-.move-style {
-  width: 6rem;
-  animation-name: confetti;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  user-select: none;
-  pointer-events: none;
-  z-index: 1;
-}
-
-@keyframes confetti {
-  0% {
-    transform: translate(0px, 2px);
-  }
-
-  100% {
-    transform: translate(500px, 700px);
-  }
-}
-
 @keyframes profile-animate {
   0% {
     border-top-right-radius: 0rem;
@@ -99,7 +79,6 @@
   cursor: pointer;
   width: 24px;
   height: 24px;
-  transition: all 0.25s;
   position: relative;
 }
 
@@ -107,34 +86,156 @@
 .hamburger-middle,
 .hamburger-bottom {
   position: absolute;
-  top: 0;
   left: 0;
   width: 24px;
   height: 2px;
   background: #000;
-  transform: rotate(0);
-  transition: all 0.5s;
+  transition:
+    transform 0.3s ease,
+    opacity 0.2s ease;
+  will-change: transform, opacity;
+}
+
+.hamburger-top {
+  top: 0;
 }
 
 .hamburger-middle {
-  transform: translateY(7px);
+  top: 7px;
 }
+
 .hamburger-bottom {
-  transform: translateY(14px);
+  top: 14px;
 }
 
-.open {
-  transform: rotate(90deg);
-  transform: translateY(0px);
-}
-
+/* When open */
 .open .hamburger-top {
-  transform: rotate(45deg) translateY(6px) translate(6px);
+  transform: rotate(45deg) translate(5px, 5px);
 }
 
 .open .hamburger-middle {
-  display: none;
+  opacity: 0;
 }
+
 .open .hamburger-bottom {
-  transform: rotate(-45deg) translateY(6px) translate(-6px);
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.45s ease-out;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.45s ease-out;
+}
+
+@keyframes premiumBounce {
+  0%,
+  100% {
+    transform: translateY(0) scale(1.2);
+  }
+  50% {
+    transform: translateY(-20px) scale(1.02);
+  }
+}
+
+.animate-soft-bounce {
+  animation: premiumBounce 2.5s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
+.animate-soft-bounce:hover {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* brand fall */
+
+.brand-fall {
+  display: inline-block;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+/* On hover: detach + fall */
+.brand-fall:hover {
+  animation: detachFall 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes detachFall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  20% {
+    transform: translateY(-6px) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(8px) rotate(2deg);
+  }
+
+  75% {
+    transform: translateY(20px) rotate(-2deg);
+  }
+
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+/* snow fall */
+/* Snow container */
+.snow-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 5; /* below navbar if needed */
+}
+
+/* Snowflake */
+.snowflake {
+  position: absolute;
+  color: white;
+  user-select: none;
+  pointer-events: none;
+  will-change: transform;
+  animation-name: fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-10px) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) translateX(60px);
+    opacity: 0.2;
+  }
 }

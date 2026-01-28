@@ -1,81 +1,110 @@
-import { useState, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Rt } from "../../images/bg-img";
 import { ImArrowDown } from "react-icons/im";
 import { RiEmotionHappyLine } from "react-icons/ri";
 import { IoPersonSharp } from "react-icons/io5";
 import { AiOutlineStar } from "react-icons/ai";
-import { IconContext } from "react-icons";
 import CountUp from "react-countup";
 
-const Counter = () => {
-  const [scrollTopw, setScrollTopw] = useState<any>(0);
-  const backgroundImage: any = {
-    backgroundImage: `url(${Rt})`,
-  };
-  useEffect(() => {
-    const handleScroll = (event: any) => {
-      setScrollTopw(window.scrollY);
-    };
+type Stat = {
+  label: string;
+  value: number;
+  icon: React.ReactNode;
+};
 
-    window.addEventListener("scroll", handleScroll);
+const stats: Stat[] = [
+  {
+    label: "Total Websites Built",
+    value: 110,
+    icon: <ImArrowDown size={38} color="#fff" />,
+  },
+  {
+    label: "Happy Clients",
+    value: 110,
+    icon: <RiEmotionHappyLine size={38} color="#fff" />,
+  },
+  {
+    label: "Active Clients",
+    value: 20,
+    icon: <IoPersonSharp size={38} color="#fff" />,
+  },
+  {
+    label: "5-Star Reviews",
+    value: 103,
+    icon: <AiOutlineStar size={38} color="#fff" />,
+  },
+];
+
+const Counter = () => {
+  const [visible, setVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    const node = sectionRef.current;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setVisible(entry.isIntersecting);
+      },
+      { threshold: 0.4 },
+    );
+
+    if (node) observer.observe(node);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      if (node) observer.unobserve(node);
     };
   }, []);
-  // console.log(scrollTopw);
+
+  // useEffect(() => {
+  //   const observer = new IntersectionObserver(
+  //     ([entry]) => {
+  //       setVisible(entry.isIntersecting);
+  //     },
+  //     {
+  //       threshold: 0.4, // triggers when 40% is visible
+  //     },
+  //   );
+
+  //   if (sectionRef.current) {
+  //     observer.observe(sectionRef.current);
+  //   }
+
+  //   return () => {
+  //     if (sectionRef.current) {
+  //       observer.unobserve(sectionRef.current);
+  //     }
+  //   };
+  // }, []);
 
   return (
     <section
       id="counter"
-      className="bg-no-repeat bg-cover bg-center"
-      style={backgroundImage}
+      ref={sectionRef}
+      className="bg-no-repeat bg-cover bg-center py-20"
+      style={{ backgroundImage: `url(${Rt})` }}
     >
-      <div className="flex flex-col md:flex-row px-3 py-32 justify-center">
-        <div className="flex flex-row w-1/4 space-x-4 p-3">
-          <span className="text-white text-6xl self-end">
-            {scrollTopw > 2400 && <CountUp delay={2} end={110} />}
-          </span>
-          <div className="flex flex-col w-full">
-            <IconContext.Provider value={{ size: "38px", color: "#fff" }}>
-              <ImArrowDown />
-            </IconContext.Provider>
-            <p className="text-white text-2xl">Total Websites built</p>
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 text-white">
+        {stats.map((stat, index) => (
+          <div key={index} className="flex items-end gap-4">
+            <span className="text-5xl font-bold min-w-[80px]">
+              {visible ? (
+                <CountUp
+                  key={visible ? "start" : "reset"} // forces remount
+                  end={stat.value}
+                  duration={2}
+                />
+              ) : (
+                0
+              )}
+            </span>
+
+            <div className="flex flex-col gap-2">
+              {stat.icon}
+              <p className="text-lg">{stat.label}</p>
+            </div>
           </div>
-        </div>
-        <div className="flex flex-row w-1/4 space-x-4 p-3">
-          <span className="text-white text-6xl self-end">
-            {scrollTopw > 2400 && <CountUp delay={2} end={110} />}
-          </span>
-          <div className="flex flex-col">
-            <IconContext.Provider value={{ size: "38px", color: "#fff" }}>
-              <RiEmotionHappyLine />
-            </IconContext.Provider>
-            <p className="text-white text-2xl">Happy Clients</p>
-          </div>
-        </div>
-        <div className="flex flex-row w-1/4 space-x-4 p-3">
-          <span className="text-white text-6xl self-end">
-            {scrollTopw > 2400 && <CountUp delay={2} end={20} />}
-          </span>
-          <div className="flex flex-col">
-            <IconContext.Provider value={{ size: "38px", color: "#fff" }}>
-              <IoPersonSharp />
-            </IconContext.Provider>
-            <p className="text-white text-2xl">ACTIVE clients</p>
-          </div>
-        </div>
-        <div className="flex flex-row w-1/4 space-x-4 p-3 ">
-          <span className="text-white text-6xl self-end">
-            {scrollTopw > 2400 && <CountUp delay={2} end={103} />}
-          </span>
-          <div className="flex flex-col">
-            <IconContext.Provider value={{ size: "38px", color: "#fff" }}>
-              <AiOutlineStar />
-            </IconContext.Provider>
-            <p className="text-white text-2xl">Total Websites built</p>
-          </div>
-        </div>
+        ))}
       </div>
     </section>
   );
