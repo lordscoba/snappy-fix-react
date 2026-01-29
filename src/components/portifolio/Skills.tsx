@@ -1,62 +1,86 @@
-import { IconContext } from "react-icons";
+import { memo, useMemo } from "react";
 import { BsPatchCheck } from "react-icons/bs";
 import { useLocation } from "react-router-dom";
 import { data } from "./Data";
+import { Helmet } from "react-helmet-async";
 
 const Skills = () => {
   const location = useLocation().pathname;
-  const locationId = location.split("/")[2];
-  const m = (locationId as unknown as number) - 1;
-  const single = data[m];
+  const locationId = Number(location.split("/")[2]);
+
+  const single = useMemo(() => {
+    return data[locationId - 1];
+  }, [locationId]);
+
+  if (!single) {
+    return (
+      <section className="py-20 text-center">
+        <p>User not found.</p>
+      </section>
+    );
+  }
+
   return (
-    <section id="skills" className="bg-[#fafafa] p-5">
-      <h2 className="text-center text-5xl font-bold pt-10">Skills</h2>
-      <p className="text-center my-5">My introduction</p>
-      <div className="flex flex-wrap md:space-x-6 space-y-4 md:space-y-4 justify-center md:justify-even">
-        {single.skills.map((p, index) => {
-          return (
-            <div
-              key={index}
-              className="w-full md:w-1/3 bg-[#fff] p-6 border-[0.5px] border-gray-400 shadow-lg rounded-2xl"
-            >
-              <h3 className="text-center text-2xl pb-5"> {p.skill_main}</h3>
-              <div className="grid grid-cols-2 gap-2 ">
-                {p.skill_level.map((s, index) => {
-                  return (
-                    <Skill
-                      key={index}
-                      domain={s.skill_type}
-                      level={s.skill_level}
-                    />
-                  );
-                })}
-              </div>
-            </div>
-          );
-        })}
+    <section id="skills" className="bg-[#fafafa] py-14 px-4">
+      <header className="text-center space-y-2">
+        <h2 className="text-4xl md:text-5xl font-bold">Skills</h2>
+        <p className="text-gray-600">My technical level</p>
+      </header>
+
+      <div className="mt-10 flex flex-wrap justify-center gap-6">
+        {single.skills.map((skill, index) => (
+          <SkillCard key={index} title={skill.skill_main}>
+            {skill.skill_level.map((item, i) => (
+              <SkillItem
+                key={i}
+                domain={item.skill_type}
+                level={item.skill_level}
+              />
+            ))}
+          </SkillCard>
+        ))}
       </div>
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            name: single.name,
+            image: single.image,
+            jobTitle: "Software Developer",
+            url: window.location.href,
+            sameAs: [
+              `https://${single.github_link}`,
+              `https://${single.linkdln_link}`,
+              `https://${single.twitter_link}`,
+            ],
+          })}
+        </script>
+      </Helmet>
     </section>
   );
 };
 
-type know = {
+type SkillItemProps = {
   domain: string;
   level: string;
 };
-const Skill = ({ domain, level }: know) => {
-  return (
-    <div className="flex flex-row space-x-2">
-      <span>
-        <IconContext.Provider value={{ size: "18px", color: "#000" }}>
-          <BsPatchCheck />
-        </IconContext.Provider>
-      </span>
-      <div className="">
-        <h3>{domain}</h3>
-        <p className="text-[#7b7b7b]">{level}</p>
-      </div>
-    </div>
-  );
-};
 
-export default Skills;
+const SkillItem = ({ domain, level }: SkillItemProps) => (
+  <div className="flex gap-2 items-start">
+    <BsPatchCheck className="mt-1 text-black" />
+    <div>
+      <h4 className="font-medium">{domain}</h4>
+      <p className="text-sm text-gray-500">{level}</p>
+    </div>
+  </div>
+);
+
+const SkillCard = ({ title, children }: any) => (
+  <article className="w-full md:w-[340px] bg-white p-6 border border-gray-300 rounded-2xl shadow hover:shadow-xl transition space-y-4">
+    <h3 className="text-center text-xl font-semibold">{title}</h3>
+    <div className="grid grid-cols-2 gap-4">{children}</div>
+  </article>
+);
+
+export default memo(Skills);

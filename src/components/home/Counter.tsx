@@ -56,27 +56,6 @@ const Counter = () => {
     };
   }, []);
 
-  // useEffect(() => {
-  //   const observer = new IntersectionObserver(
-  //     ([entry]) => {
-  //       setVisible(entry.isIntersecting);
-  //     },
-  //     {
-  //       threshold: 0.4, // triggers when 40% is visible
-  //     },
-  //   );
-
-  //   if (sectionRef.current) {
-  //     observer.observe(sectionRef.current);
-  //   }
-
-  //   return () => {
-  //     if (sectionRef.current) {
-  //       observer.unobserve(sectionRef.current);
-  //     }
-  //   };
-  // }, []);
-
   return (
     <section
       id="counter"

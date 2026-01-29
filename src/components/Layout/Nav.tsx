@@ -1,83 +1,124 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { SnappyFixLogo } from "../../images/logo";
 
 type NavProps = {
   background: string;
 };
 
+const links = [
+  "hero",
+  "why",
+  "features",
+  "pricing",
+  "testimonial",
+  "team",
+  "contact",
+];
+
 const Nav = ({ background }: NavProps) => {
   const [open, setOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement | null>(null);
 
-  const toggleMenu = () => setOpen((prev) => !prev);
-  const closeMenu = () => setOpen(false);
+  // Close when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    };
+
+    if (open) document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [open]);
+
+  // Close on ESC key
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+
+    if (open) document.addEventListener("keydown", handleEscape);
+    return () => document.removeEventListener("keydown", handleEscape);
+  }, [open]);
+
+  // Prevent body scroll when menu is open
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
 
   return (
-    <nav className={`fixed p-6 ${background} w-full z-50`}>
-      <div className="flex items-center justify-between">
+    <nav className={`fixed top-0 w-full z-50 transition ${background}`}>
+      <div className="flex items-center justify-between p-6 max-w-7xl mx-auto">
         {/* Logo */}
-        <img className="w-[7rem]" src={SnappyFixLogo} alt="logo" />
+        <a href="#hero" aria-label="Snappy-Fix homepage">
+          <img
+            src={SnappyFixLogo}
+            alt="Snappy-Fix Technologies logo"
+            className="w-28"
+          />
+        </a>
 
         {/* Desktop menu */}
-        <div className="hidden md:flex md:space-x-2 lg:space-x-5 text-white">
-          <a href="#hero">Home</a>
-          <a href="#why">About</a>
-          <a href="#features">Features</a>
-          <a href="#pricing">Pricing</a>
-          <a href="#testimonial">Testimonials</a>
-          <a href="#team">Team</a>
-          <a href="#contact">Contact</a>
+        <div className="hidden md:flex gap-6 text-white">
+          {links.map((id) => (
+            <a key={id} href={`#${id}`} className="hover:underline">
+              {id.charAt(0).toUpperCase() + id.slice(1)}
+            </a>
+          ))}
         </div>
 
-        {/* Desktop button */}
-        <div className="hidden md:block text-white">
-          <button className="rounded-t-3xl rounded-r-3xl py-3 px-14 bg-transparent border-2 border-[#9572e8] hover:bg-[#fb397d] hover:border-none">
-            Login
-          </button>
-        </div>
+        {/* Desktop CTA */}
+        <button className="hidden md:block border-2 border-[#9572e8] px-8 py-2 rounded-full text-white hover:bg-[#fb397d] transition">
+          Login
+        </button>
 
-        {/* Hamburger */}
-        <div className="flex md:hidden ml-auto">
-          <button
-            onClick={toggleMenu}
-            className={`hamburger focus:outline-none ${open ? "open" : ""}`}
+        {/* Mobile toggle */}
+        <button
+          aria-label="Toggle navigation"
+          aria-expanded={open}
+          onClick={() => setOpen((prev) => !prev)}
+          className="md:hidden text-white text-3xl"
+        >
+          {open ? "✕" : "☰"}
+        </button>
+      </div>
+
+      {/* Mobile menu */}
+      {open && (
+        <div className="fixed inset-0 bg-black/40 z-40 md:hidden">
+          <div
+            ref={menuRef}
+            className="absolute top-0 right-0 w-72 h-full bg-[#9572e8] text-white flex flex-col p-6 gap-6 shadow-xl"
           >
-            <span className="hamburger-top"></span>
-            <span className="hamburger-middle"></span>
-            <span className="hamburger-bottom"></span>
-          </button>
-        </div>
+            {/* Close button */}
+            <button
+              aria-label="Close menu"
+              onClick={() => setOpen(false)}
+              className="self-end text-2xl"
+            >
+              ✕
+            </button>
 
-        {/* Mobile menu */}
-        {open && (
-          <div className="absolute z-20 flex flex-col items-center py-8 mt-10 space-y-6 font-bold bg-[#9572e8] left-6 right-6 drop-shadow-md text-white md:hidden">
-            <a onClick={closeMenu} href="#hero">
-              Home
-            </a>
-            <a onClick={closeMenu} href="#why">
-              About
-            </a>
-            <a onClick={closeMenu} href="#features">
-              Features
-            </a>
-            <a onClick={closeMenu} href="#pricing">
-              Pricing
-            </a>
-            <a onClick={closeMenu} href="#testimonial">
-              Testimonials
-            </a>
-            <a onClick={closeMenu} href="#team">
-              Team
-            </a>
-            <a onClick={closeMenu} href="#contact">
-              Contact
-            </a>
+            {links.map((id) => (
+              <a
+                key={id}
+                href={`#${id}`}
+                onClick={() => setOpen(false)}
+                className="text-lg hover:underline"
+              >
+                {id.charAt(0).toUpperCase() + id.slice(1)}
+              </a>
+            ))}
 
-            <button className="rounded-t-3xl rounded-r-3xl py-3 px-14 bg-transparent border-2 border-[#fff] hover:bg-[#fb397d] hover:border-none">
+            <button className="mt-6 border-2 border-white px-6 py-3 rounded-full hover:bg-[#fb397d] transition">
               Login
             </button>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </nav>
   );
 };
