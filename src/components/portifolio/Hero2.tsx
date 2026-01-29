@@ -97,7 +97,7 @@ const Hero = () => {
             height="400"
             decoding="async"
             src={single.image}
-            alt={`${single.name} profile picture`}
+            alt={single.name}
             className="rounded-2xl shadow-lg animate-zoom"
             loading="eager"
           />
