@@ -4,31 +4,21 @@ import { WelcomeImg } from "../../images/bg-img";
 const Hero = () => {
   const [email, setEmail] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Subscribed:", email);
-  };
-
   return (
-    <section
-      id="hero"
-      className="relative min-h-screen overflow-hidden flex items-center"
-    >
-      <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-6 gap-10">
-        {/* Left content */}
-        <div className="z-10 max-w-xl">
-          <h1 className="text-white text-5xl md:text-8xl font-semibold animate__animated animate__bounceInDown">
-            Snappy-Fix Tech
+    <section id="hero" className="relative min-h-screen flex items-center">
+      <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-6 gap-12">
+        {/* Text */}
+        <div className="max-w-xl space-y-6">
+          <h1 className="text-white text-5xl md:text-7xl font-bold">
+            Snappy-Fix Technologies
           </h1>
 
-          <p className="text-white mt-4 text-lg animate__animated animate__bounceInLeft">
-            Build any website of your dreams
+          <p className="text-white/90 text-lg leading-relaxed">
+            We design and build high-performance websites, web applications, and
+            digital products that help businesses grow online.
           </p>
 
-          <form
-            onSubmit={handleSubmit}
-            className="mt-10 flex flex-col sm:flex-row gap-3"
-          >
+          <form className="flex flex-col sm:flex-row gap-3">
             <label htmlFor="email" className="sr-only">
               Email address
             </label>
@@ -37,30 +27,33 @@ const Hero = () => {
               id="email"
               type="email"
               required
+              placeholder="you@example.com"
+              className="p-4 rounded-full bg-[#9572e8] text-white placeholder-white/70 w-full"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="support@snappy-fix.com"
-              className="bg-[#9572e8] p-4 rounded-full outline-none text-white placeholder:text-white/70 w-full"
             />
 
             <button
               type="submit"
-              className="text-white bg-[#fb397d] px-10 py-4 rounded-full hover:opacity-90 transition"
+              className="bg-[#fb397d] px-10 py-4 rounded-full text-white hover:opacity-90 whitespace-nowrap
+"
             >
-              Subscribe
+              Get Updates
             </button>
           </form>
         </div>
 
-        {/* Right image */}
-        <div className="hidden md:block relative z-10">
+        {/* Image */}
+        <figure className="hidden md:block max-w-lg">
           <img
             src={WelcomeImg}
-            alt="Welcome illustration"
+            alt="Web development illustration showing digital innovation"
+            width={640}
+            height={480}
             loading="lazy"
-            className="w-[40rem] animate__animated animate__pulse animate__infinite"
+            className="animate-zoom"
           />
-        </div>
+        </figure>
       </div>
     </section>
   );

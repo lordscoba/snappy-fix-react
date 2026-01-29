@@ -1,20 +1,27 @@
 const Join = () => {
   return (
-    <section id="join" className="bg-gradient-to-r from-[#a765e1] to-[#7973ed]">
+    <section
+      id="join"
+      aria-labelledby="join-heading"
+      className="bg-gradient-to-r from-[#a765e1] to-[#7973ed]"
+    >
       <div className="max-w-7xl mx-auto px-6 py-16 md:py-24 flex flex-col md:flex-row items-center justify-between gap-8">
         {/* Text */}
-        <div className="max-w-xl space-y-4 text-center md:text-left">
-          <h2 className="text-white text-3xl md:text-4xl font-semibold">
-            Join businesses growing with Snappy-fix Technologies
+        <header className="max-w-xl space-y-4 text-center md:text-left">
+          <h2
+            id="join-heading"
+            className="text-white text-3xl md:text-4xl font-bold"
+          >
+            Join Businesses Growing with Snappy-Fix Technologies
           </h2>
 
-          <p className="text-white/90 text-base md:text-lg">
-            Find the perfect website of your dreams — 100% satisfaction
-            guaranteed.
+          <p className="text-white/90 text-base md:text-lg leading-relaxed">
+            Partner with Snappy-Fix Technologies to build high-performance
+            websites and digital products that drive real business growth.
           </p>
-        </div>
+        </header>
 
-        {/* Button */}
+        {/* CTA */}
         <div>
           <button
             type="button"

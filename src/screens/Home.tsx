@@ -21,34 +21,33 @@ const backgrounds = [SnowPics, SnowG, SnowC1, SnowC2];
 const Home = () => {
   const [scrolled, setScrolled] = useState(false);
 
-  // Pick ONE random background per page load
   const randomBg = useMemo(() => {
-    const index = Math.floor(Math.random() * backgrounds.length);
-    return backgrounds[index];
+    return backgrounds[Math.floor(Math.random() * backgrounds.length)];
   }, []);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 40);
+      requestAnimationFrame(() => {
+        setScrolled(window.scrollY > 40);
+      });
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <div
-      className="relative"
-      style={{ overflowX: "hidden", scrollBehavior: "smooth" }}
-    >
-      <Snow />
-      <div
+    <main className="relative overflow-x-hidden scroll-smooth">
+      <Snow aria-hidden="true" />
+
+      <header
         className="bg-no-repeat bg-cover bg-center"
         style={{ backgroundImage: `url(${randomBg})` }}
       >
         <NavbarMenu background={scrolled ? "bg-[#884bdf]" : "bg-transparent"} />
         <Hero />
-      </div>
+      </header>
+
       <Why />
       <What />
       <Features />
@@ -59,7 +58,7 @@ const Home = () => {
       <Join />
       <Team />
       <ContactUs />
-    </div>
+    </main>
   );
 };
 
